@@ -1,0 +1,42 @@
+body
+{
+max-width: 70%;
+text-align: center;
+margin: auto;
+
+}
+
+header{
+    background-color: white;
+}
+header img {
+
+    width: 153px;
+    border-radius: 69%;
+    float: left;
+}
+header nav ul {
+float: right;
+font-size: x-large;
+   color : white;
+    font-family: cursive;
+}
+li {
+
+    display: inline;
+    font-size: large;
+    font-family: cursive;
+    padding-top: 19px;
+    background-color:deeppink;
+    
+padding: 19px;
+
+    
+}
+h2{
+
+    float: left;
+    font-family: cursive;
+    font-size: XX-LARGE;
+    color: deeppink;
+}
