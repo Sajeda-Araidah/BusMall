@@ -21,7 +21,8 @@ font-size: x-large;
    color : white;
     font-family: cursive;
 }
-li {
+
+#meuList li {
 
     display: inline;
     font-size: large;
@@ -46,4 +47,8 @@ img{
     border-radius: 69%;
     display: inline;
 
+}
+
+#listOfItem{
+    text-align: initial;
 }
