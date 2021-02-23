@@ -38,7 +38,7 @@ const imagesSection = document.getElementById('images-section');
 
 
 function BusMall(name) {
-  this.name;
+  this.name = name;
   this.path = `./img/${name}.jpg`;
   this.votes = 0;
   this.views = 0;
@@ -70,14 +70,14 @@ leftImage = getRandomNumber(0, BusMall.all.length - 1);
     rightImage = getRandomNumber(0, BusMall.all.length - 1);
   }
 
-  console.log('first', leftImage, BusMall.all[leftImage].path);
+  //console.log('first', leftImage, BusMall.all[leftImage].path);
   firstImage.src = BusMall.all[leftImage].path;
   firstImage.title = BusMall.all[leftImage].name;
   firstImage.alt = BusMall.all[leftImage].name;
   BusMall.all[leftImage].views++;
 
 
-  console.log('second', middleImage, BusMall.all[middleImage].path);
+ // console.log('second', middleImage, BusMall.all[middleImage].path);
   secondImage.src = BusMall.all[middleImage].path;
   secondImage.title = BusMall.all[middleImage].name;
   secondImage.alt = BusMall.all[middleImage].name;
@@ -85,7 +85,7 @@ leftImage = getRandomNumber(0, BusMall.all.length - 1);
   BusMall.all[middleImage].views++;
 
 
-  console.log('third', rightImage, BusMall.all[rightImage].path);
+  //console.log('third', rightImage, BusMall.all[rightImage].path);
   thirdImage.src = BusMall.all[rightImage].path;
   thirdImage.title = BusMall.all[rightImage].name;
   thirdImage.alt = BusMall.all[rightImage].name;
@@ -98,45 +98,46 @@ imagesSection.addEventListener('click', handleClick);
 //firstImage.addEventListener('click', handleClick);
 //secondImage.addEventListener('click',handleClick);
 //thirdImage.addEventListener('click',handleClick);
+let maxClikes = 1;
 
 function handleClick(event) {
-  let maxClikes = 25;
-  
-  console.log('Target', event.target.id);
-  for (let i = 0; i < maxClikes; i++) {
-
-  if (i <= maxClikes) {
-   for (let j = 0; j < (BusMall.all.length); j++) {
+  //console.log('Target', event.target.id);
+  console.log(maxClikes);
+  if ( maxClikes <= 25 ) {
     if (event.target.id === 'first-image') {
 
       BusMall.all[leftImage].votes++;
-      console.log("Hi");
+      //console.log("Hi");
+      maxClikes++;
+
       render();
 
     } else if (event.target.id === 'second-image') {
       BusMall.all[middleImage].votes++;
+      maxClikes++;
+
       render();
 
     } else if (event.target.id === 'third-image') {
       BusMall.all[rightImage].votes++;
+      maxClikes++;
+
       render();
     }
-  }
   // render();
     }else {
   
         let btn = document.getElementById('btn');
         btn.addEventListener('click', showResult);
-        firstImage.removeEventListener('click', handleClick);
+        /*firstImage.removeEventListener('click', handleClick);
         secondImage.removeEventListener('click', handleClick);
-        thirdImage.removeEventListener('click', handleClick);
+        thirdImage.removeEventListener('click', handleClick);*/
       }
 
 
-  console.log(BusMall.all);
-  render();
-
-}}
+  //console.log(BusMall.all);
+  //render();
+}
 
 
 function showResult() {
@@ -147,8 +148,9 @@ function showResult() {
   for (let i = 0; i < BusMall.all.length; i++) {
 
     result = document.createElement('li');
+    result.innerHTML = BusMall.all[i].name + ' has ' + BusMall.all[i].votes + ' votes ' + ' and shown' + BusMall.all[i].views + ' times';
     list.appendChild(result);
-    result.textContent = BusMall.all[i].name + ' has ' + BusMall.all[i].votes + ' votes ' + ' and shown' + BusMall.all[i].views + ' times';
+
   }
 }
  render();
