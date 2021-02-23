@@ -9,7 +9,7 @@ margin: auto;
 header{
     background-color: white;
 }
-header img {
+header img #logo {
 
     width: 153px;
     border-radius: 69%;
@@ -39,4 +39,11 @@ h2{
     font-family: cursive;
     font-size: XX-LARGE;
     color: deeppink;
+}
+
+img{
+    width: 153px;
+    border-radius: 69%;
+    display: inline;
+
 }
