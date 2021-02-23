@@ -92,7 +92,7 @@ leftImage = getRandomNumber(0, BusMall.all.length - 1);
 
   BusMall.all[middleImage].views++;
 
-} render();
+} 
 
 imagesSection.addEventListener('click', handleClick);
 //firstImage.addEventListener('click', handleClick);
@@ -142,6 +142,8 @@ function handleClick(event) {
 
 function showResult() {
 
+  createChart();
+
   let list = document.getElementById('listOfItem');
   let result;
 
@@ -153,4 +155,54 @@ function showResult() {
 
   }
 }
+
+
  render();
+
+ function createChart() {
+  const ctx = document.getElementById('myChart').getContext('2d');
+
+  const BusMallNames = [];
+  const BusMallVotes = [];
+  const BusMallViews = [];
+
+  for (let i = 0; i < BusMall.all.length; i++) {
+    BusMallNames.push(BusMall.all[i].name);
+    BusMallVotes.push(BusMall.all[i].votes);
+    BusMallViews.push(BusMall.all[i].views);
+
+
+  }
+  new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+      labels: BusMallNames,
+      datasets: [
+        {
+          barPercentage: 0.5,
+          // barThickness: 6,
+          borderWidth: 5,
+          label: '# of votes:',
+          backgroundColor: 'rgb(100, 125, 50)',
+          borderColor: 'rgb(100, 125, 50)',
+          data: BusMallVotes,
+        },
+        {
+          barPercentage: 0.5,
+          // barThickness: 6,
+          borderWidth: 5,
+          label: '# of views:',
+          backgroundColor: 'rgb(90, 115, 50)',
+          borderColor: 'rgb(90, 115, 50)',
+          data: BusMallViews,
+        },
+      ],
+    },
+
+    // Configuration options go here
+    options: {},
+  });
+}
